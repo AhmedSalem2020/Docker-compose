@@ -1,0 +1,28 @@
+ 
+version: "3"
+services:
+
+  app-1:
+    build: asalem2020/app1
+    ports:
+     - "9999:8080"
+    container_name: web-app1
+  
+  app-2:
+    build: ./app2/Java-testapp/
+    ports:
+     - "7777:8080"
+    container_name: web-app2
+
+  nginx:
+    image: asalem2020/reverse-proxy
+    ports:
+     - "80:80"
+    links:
+     - app-1
+     - app-2  
+    container_name: reverse-proxy-project
+
+
+
+
